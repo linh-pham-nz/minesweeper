@@ -100,46 +100,19 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   //   lib.displayMessage('You win!')
-  // }
-  
   for (var j = 0; j < board.cells.length; j++) {
     if (board.cells[j].isMine && !board.cells[j].isMarked) {
       return;
     }
-    else if (!board.cells[j].isMarked && board.cells[j].hidden) {
-      return;
+    else if (!board.cells[j].isMine) {
+      if (board.cells[j].isMarked || board.cells[j].hidden) {
+        return;
+      } 
     }
   }
   lib.displayMessage('You win!');
 }
-
-
-//  ALTERNATIVE WORKING OPTIONS
-
-
-// for (var j = 0; j < board.cells.length; j++) {
-//   if (!board.cells[j].isMine && !board.cells[j].hidden) {
-//     return;
-//   }
-//   else (!board.cells[j].isMarked && board.cells[j].hidden) {
-//     return;
-//   }
-// }
-// lib.displayMessage('You win!');
-// }
-
-//   for (var j = 0; j < board.cells.length; j++) {
-//     if ((!board.cells[j].isMine && !board.cells[j].hidden) && (board.cells[j].isMine && board.cells[j].isMarked)) {
-//       return;
-//     }
-//     else if (board.cells[j].isMarked && board.cells[j].hidden) {
-//       return;
-//     }
-//   }
-//   // lib.displayMessage('You win!');  
-// }
-// console.log('the cells', board.cells[j].isMine);
-
+  
 
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
