@@ -60,6 +60,7 @@ var board = {
 }
 
 
+
 // Don't remove this function call: it makes the game work!
 // For Loop - loop thru contents of board.cells (board.cells is an array of objects)
 // Function to call countSurroundingMines once for each cell in board.cells. Pass each cell as an argument
@@ -77,6 +78,8 @@ function startGame () {
   document.addEventListener("contextmenu", checkForWin);
   lib.initBoard()
 }
+
+
 
 
 
@@ -100,28 +103,29 @@ function checkForWin () {
   // }
   
   for (var j = 0; j < board.cells.length; j++) {
-    if (!board.cells[j].isMine && !board.cells[j].hidden) {
-      if (board.cells[j].isMine && board.cells[j].isMarked) {
-        lib.displayMessage('You win!');
-      }
+    if (board.cells[j].isMine && !board.cells[j].isMarked) {
+      return;
     }
-      // else (!board.cells[j].isMarked && board.cells[j].hidden) {
-      // return;
-    // }
+    else if (!board.cells[j].isMarked && board.cells[j].hidden) {
+      return;
+    }
   }
-  // lib.displayMessage('You win!');
+  lib.displayMessage('You win!');
 }
 
 
-//   for (var j = 0; j < board.cells.length; j++) {
-//     if (board.cells[j].isMine && !board.cells[j].isMarked) {
-//       return;
-//     }
-//     else if (!board.cells[j].isMarked && board.cells[j].hidden) {
-//       return;
-//     }
+//  ALTERNATIVE WORKING OPTIONS
+
+
+// for (var j = 0; j < board.cells.length; j++) {
+//   if (!board.cells[j].isMine && !board.cells[j].hidden) {
+//     return;
 //   }
-//   lib.displayMessage('You win!');
+//   else (!board.cells[j].isMarked && board.cells[j].hidden) {
+//     return;
+//   }
+// }
+// lib.displayMessage('You win!');
 // }
 
 //   for (var j = 0; j < board.cells.length; j++) {
